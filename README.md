@@ -1,2 +1,2 @@
 # Chat
-Chat +php +js +irc
+Chat +php +js +ircd
