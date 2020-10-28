@@ -12,6 +12,8 @@
 </head>
 
 <body>
+    <?php include("mysql/MySql.php") ?>
+    <?php include("php.php") ?>
     <?php include("chat.html") ?>
 
     <script src="assets/js/jquery.min.js"></script>
