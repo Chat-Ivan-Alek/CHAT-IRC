@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</head>
+<body>
+
+    <form action="mensajes.php" method="post" id="formulario">
+        <input type="text" name="nombre" id="nombre">
+        <input type="text" name="mensaje" id="mensaje">
+        <input type="submit" name="submit">
+    </form>
+
+
+    <div id="contenedor_botones">
+        <button class="btn btn-dark btn-lg my-3"><a href="segundaPag.html"></a>Mostrar x</button>
+        <button class="btn btn-dark btn-lg my-3"><a href="terceraPag.html"></a>Mostrar y</button>
+        <button class="btn btn-dark btn-lg my-3"><a href="cuartaPag.html"></a>Mostrar z</button>
+    </div>
+
+    <div id="contenido">
+        <ul>
+
+        </ul>
+
+    </div>
+    
+</body>
+    <script>
+
+        //Function cambio de páginas
+        
+        $(function(){
+
+            $("button").click(function(){
+                var link = $(this).children().attr("href");
+                // var link = $(this).children('a').attr("href");
+
+                // alert(link.attr("href"));
+
+                $("#contenido").load(link);
+                return false;
+            });
+        });
+
+        $(function(){
+            
+            $("#formulario").submit(function(){
+                
+                /* var datos_envio = {
+                    nombre: $("#nombre").val(),
+                    mensaje: $("#mensaje").val()
+                } */
+                var datos_envio = $(this).serialize();
+
+                $.post("mensajess.php", datos_envio, proceso_datos).error("hola");
+                return false;
+                
+            });
+            
+            function proceso_datos(datos){
+                $("#contenido").append("<li>"+datos+"</li>");
+    
+            }
+            function procesar_error(){
+
+                var msgError = "OOOOOpsie, ha ocurrido un error muy esperado";
+
+                $("#contenido").append("<li>"+msgError+"</li>");
+            }
+        });
+
+    </script>
+</html>

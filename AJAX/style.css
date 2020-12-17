@@ -1,0 +1,30 @@
+
+
+#contenedor_botones{
+    width: 100%;
+    display: flex;
+    align-content: center;
+    justify-content: space-around;
+}
+html, body{
+    height: 100%;
+}
+
+#contenido{
+    height: 100%;
+    background:aquamarine;
+}
+
+
+#contenido_segundaPag{
+    height: 100%;
+    background: blueviolet;
+}
+#contenido_terceraPag{
+    height: 100%;
+    background: antiquewhite;
+}
+#contenido_cuartaPag{
+    height: 100%;
+    background: olive;
+}
