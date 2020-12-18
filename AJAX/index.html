@@ -25,9 +25,6 @@
     </div>
 
     <div id="contenido">
-        <ul>
-
-        </ul>
 
     </div>
     
@@ -37,43 +34,48 @@
         //Function cambio de páginas
         
         $(function(){
-
             $("button").click(function(){
                 var link = $(this).children().attr("href");
                 // var link = $(this).children('a').attr("href");
-
+                
                 // alert(link.attr("href"));
-
+                
                 $("#contenido").load(link);
                 return false;
             });
         });
-
+        
         $(function(){
             
             $("#formulario").submit(function(){
                 
-                /* var datos_envio = {
+                var datos_envio = {
                     nombre: $("#nombre").val(),
                     mensaje: $("#mensaje").val()
-                } */
-                var datos_envio = $(this).serialize();
+                }
+                // var datos_envio = $(this).serialize();
+                
+                
+                $.post("mensajes.php", datos_envio, proceso_datos);
 
-                $.post("mensajess.php", datos_envio, proceso_datos).error("hola");
                 return false;
                 
             });
             
             function proceso_datos(datos){
-                $("#contenido").append("<li>"+datos+"</li>");
-    
+                $("#contenido").append("<p>"+datos+"</p>");
+                return false;
             }
-            function procesar_error(){
+
+
+
+            //Procesar errores
+            /* function procesar_error(){
 
                 var msgError = "OOOOOpsie, ha ocurrido un error muy esperado";
 
                 $("#contenido").append("<li>"+msgError+"</li>");
-            }
+            } */
         });
 
     </script>

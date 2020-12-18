@@ -8,11 +8,21 @@
 }
 html, body{
     height: 100%;
+    width: 100%;
 }
 
 #contenido{
-    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: space-around;
     background:aquamarine;
+}
+
+#contenido p{
+    width: 51%;
+    word-wrap: break-word;
 }
 
 

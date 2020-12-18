@@ -8,16 +8,26 @@ function conection(){
     $password = "";
     $database = "mensajes";
     
-    $conec = mysqli_connect($host, $user, $password, $database);
+    $conn = mysqli_connect($host, $user, $password, $database);
     
-    return $conec;
-}
+    return $conn;
+}   
 
 // $sql = "insert into mensajes Values (" . $_POST['nombre'] . "), (" . $_POST['mensaje'] . ")";
-$sql = "insert into mensajes Values('".$_POST['nombre']."', '".$_POST['mensaje']."')";
+
+$sql = "insert into mensajes Values('','".$_POST['nombre']."', '".$_POST['mensaje']."')";
+// $sql = "insert into mensajes Values('','', '')";
+
 
 mysqli_query(conection(), $sql);
 
-echo $_POST['mensaje'];
 
+$sql = "SELECt * FROM mensajes ORDER BY id DESC LIMIT 1 ";
+
+$result = mysqli_query(conection(), $sql);
+
+
+while($row = mysqli_fetch_assoc($result)){
+    echo ("NOMBRE: " . $row["mensaje"] . " - MENSAJE: " . $row["mensaje"] . "<br>");
+}
 ?>
